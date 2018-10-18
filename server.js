@@ -4,9 +4,22 @@ var express = require('express'),
 
   bodyParser = require('body-parser');
 var cors = require('cors');
+var mysql = require('mysql');
 
-// TODO: Muruli, the mysql database should be connected here
 
+// Connect to the database
+console.log('Connecting to the database.....');
+var connection = mysql.createConnection({
+ database: 'mssDB',  // TODO: change your database name
+ host: "localhost",
+ user: "root",
+ password: "abcd1234!"
+});
+
+connection.connect(function(err) {
+ if (err) throw err;
+ console.log("Connected to the database!!");
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -14,7 +27,7 @@ app.use(cors());
 
 
 var routes = require('./api/routes/patientRoutes'); //importing route
-routes(app); //register the route
+routes(app, connection); //register the route
 
 
 app.listen(port);
