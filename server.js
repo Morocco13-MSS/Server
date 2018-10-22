@@ -10,7 +10,7 @@ var mysql = require('mysql');
 // Connect to the database
 console.log('Connecting to the database.....');
 var connection = mysql.createConnection({
- database: 'mssDB',  // TODO: change your database name
+ database: 'mss_local',  // TODO: change your database name
  host: "localhost",
  user: "root",
  password: "abcd1234!"
