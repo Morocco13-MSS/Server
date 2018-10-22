@@ -7,6 +7,10 @@ module.exports = function(app) {
     // and return it to the route.
     var patients = require('../controllers/patientController');
 
+    // API for Global View ROW 2
+    app.route('/patients/global')
+    .get(patients.global);
+
     // API for ROW-3,Patients (Curative and age>70)
     app.route('/patients/curative/agegt70')
     .get(patients.agegt70);
