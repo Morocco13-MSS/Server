@@ -23,54 +23,41 @@ app.route('/patients/global')
     var nACount = 0;
     var missCount = 0;
     
-    //var queryString = 'SELECT formulaire.id, formulaire.id_organe, organe.id, organe.code as formCode, item.intitule, formulaire_item.id_formulaire, formulaire_item.valeur_item AS itemValue FROM `formulaire`,`organe`,`item`,`formulaire_item` WHERE (formulaire.id_organe = organe.id AND organe.code = "E" AND formulaire.id = formulaire_item.id_formulaire) AND (item.intitule = "Résection" AND formulaire_item.valeur_item = 1 )'
-    //var queryString = 'SELECT formulaire.id_organe,formulaire.id,organe.Id,organe.code as formCode,item.intitule,formulaire_item.id,formulaire_item.valeur_item AS itemValue FROM `formulaire`,`organe`,`item`,`formulaire_item` WHERE (formulaire.id_organe = organe.Id AND organe.code = "E" AND formulaire.id = formulaire_item.id_formulaire) AND item.intitule = "Résection"'
-    //var queryString = 'SELECT formulaire.id, formulaire.id_organe, organe.id, organe.code as formCode, item.intitule, formulaire_item.id, formulaire_item.valeur_item AS itemValue FROM `formulaire`,`organe`,`item`,`formulaire_item` WHERE (formulaire.id_organe = organe.id AND organe.code = "E" AND formulaire.id = formulaire_item.id_formulaire) AND item.intitule = "Résection"'
+    var queryString = 'SELECT formulaire.id, formulaire.id_organe, organe.id, organe.code, item.intitule , formulaire_item.id_formulaire , formulaire_item.valeur_item as itemValue FROM `formulaire`,`organe`,`item`,`formulaire_item` WHERE (formulaire.id_organe = organe.id AND organe.code = "E" AND formulaire.id = formulaire_item.id_formulaire) AND item.intitule = "Résection"';
     dbConnection.query(queryString,function (error,result, fields) 
     {
         if (error) throw error;
-        // for (var i in result) 
-        // {
-        //   totalPatients++;
-        //   if(result[i].itemValue == 0) //Not Applicatble 
-        //   {
-        //     nACount++;
-        //   }
-        //   else if(result[i].itemValue == 1) //A visée curative
-        //   {
-        //     curativeCount++;
-        //   }
-        //   else if(result[i].itemValue == 2) //Palliative
-        //   {
-        //     palliCount++;
-        //   }
-        //   else
-        //   {
-        //     missCount++;
-        //   }            
-        // }
+        for (var i in result) 
+        {
+          totalPatients++;
+          if(result[i].itemValue == 0) //Not Applicatble 
+          {
+            nACount++;
+          }
+          else if(result[i].itemValue == 1) //A visée curative
+          {
+            curativeCount++;
+          }
+          else if(result[i].itemValue == 2) //Palliative
+          {
+            palliCount++;
+          }
+          else
+          {
+            missCount++;
+          }            
+        }
         
-        globalViewObj  = {
+        var resObj  = {
                         totalPatients:totalPatients,
                         curativeCount:curativeCount,
                         palliCount:palliCount,
                         nACount:nACount,
                         missCount,missCount};
-        res.json(globalViewObj);             
+        res.json(resObj);             
      
         }    
       );
-console.log(totalPatients)
-
-      var globalViewObj  = {
-        totalPatients:totalPatients,
-        curativeCount:curativeCount,
-        palliCount:palliCount,
-        nACount:nACount,
-        missCount,missCount};
-
-      console.log("Display the list")       
-      res.json(globalViewObj);   
    
 })
 //****************************************************************************************
