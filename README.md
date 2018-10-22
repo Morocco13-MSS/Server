@@ -18,4 +18,3 @@ How to delete the existing database and create a new one:
   mysql>CREATE DATABASE new_database_name
 - Come out of the mysql login and then
    mysql -u root -p  <new_database_name> < yasmine.sql
-

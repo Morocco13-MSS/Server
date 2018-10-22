@@ -1,41 +1,140 @@
-'use strict';
+//include the model (DB connection)
+var db = require('../models/dbconnection'); 
 
-exports.getPatientAge = function(req, res) {
-    //TODO: This is the place you need to retrive data from database
-        //For exampleL: req.params.ageRange will be used a paratmeter from UI
-        //res will be the response result back to UI
+//create class
+var Patients = {
 
-    var asaResult = {
-        asa: {
-            gt2: 90,
-            others: 57,
-            missing: 10
-        },
-        data2: [
-            {x: 0, y: 8},
-            {x: 1, y: 5},
-            {x: 2, y: 4},
-            {x: 3, y: 9},
-            {x: 4, y: 1},
-            {x: 5, y: 7},
-            {x: 6, y: 6},
-            {x: 7, y: 3},
-            {x: 8, y: 2},
-            {x: 9, y: 0}
-        ],
-        data3: [
-            {x: 0, y: 8},
-            {x: 1, y: 5},
-            {x: 2, y: 4},
-            {x: 3, y: 9},
-            {x: 4, y: 1},
-            {x: 5, y: 7},
-            {x: 9, y: 6},
-            {x: 7, y: 3},
-            {x: 8, y: 2},
-            {x: 9, y: 0}
-          ]
+    //Global View ROW 2
+    global: function (req, res) {
+        /********************************************************* */  
+        //TODO: Remove the below json object and get it as input
+        var startDate = "2018-01-01";
+        var endDate = "2019-01-01";
+        
+        var reqObj = {startDate:startDate,
+                    endDate:endDate,
+                    formType:'E',
+                    UnitType:1};  
+        /********************************************************* */
+        var totalPatients = 0;
+        var curativeCount = 0;
+        var palliCount = 0;
+        var nACount = 0;
+        var missCount = 0;
+        
+        var queryString = 'SELECT formulaire.id, formulaire.id_organe, organe.id, organe.code, item.intitule , formulaire_item.id_formulaire , formulaire_item.valeur_item as itemValue FROM `formulaire`,`organe`,`item`,`formulaire_item` WHERE (formulaire.id_organe = organe.id AND organe.code = "E" AND formulaire.id = formulaire_item.id_formulaire) AND item.intitule = "Résection"';
+        db.query(queryString,function (error,result, fields) 
+        {
+            if (error) throw error;
+            for (var i in result) 
+            {
+            totalPatients++;
+            if(result[i].itemValue == 0) //Not Applicatble 
+            {
+                nACount++;
+            }
+            else if(result[i].itemValue == 1) //A visée curative
+            {
+                curativeCount++;
+            }
+            else if(result[i].itemValue == 2) //Palliative
+            {
+                palliCount++;
+            }
+            else
+            {
+                missCount++;
+            }            
+            } 
+            var resObj  = {
+                            totalPatients:totalPatients,
+                            curativeCount:curativeCount,
+                            palliCount:palliCount,
+                            nACount:nACount,
+                            missCount,missCount};
+            res.json(resObj);             
+     
+            }    
+        );
+    },
 
+    //Patients (Curative and age>70)
+    agegt70: function (req, res) {
+        // // console.log(req)
+        // /********************************************************* */  
+        // //TODO: Remove the below json object and get it as input
+        // var startDate = "2018-01-01";
+        // var endDate = "2019-01-01";
+        // var reqObj = {startDate:startDate,
+        //             endDate:endDate};  
+        // /********************************************************* */  
+        // console.log("startDate:", reqObj.startDate);
+        // console.log("endDate:",reqObj.endDate);
+        // var CurPatients = 0;
+        // var queryString = 'SELECT * FROM `formulaire_item`,`patient`,`item`,`formulaire` WHERE (formulaire.date_creation BETWEEN "'+ reqObj.startDate +'" AND "'+ reqObj.endDate +'")  AND patient.age > 70 && item.intitule = "Résection" && formulaire_item.valeur_item = "1" && formulaire.id_patient=patient.id && formulaire.id = formulaire_item.id_formulaire && formulaire_item.id_item = item.id';
+                        
+        // db.query(queryString,function (error,result, fields) 
+        // {
+        //     if (error) throw error;
+        //     for (var i in result) 
+        //     {
+        //     CurPatients++; 
+        //     }
+        //     var resObj = {patientgt70:CurPatients};
+        //     res.json(resObj); //TODO: Need to modify the scripts to send back total curative patients                           
+        // }); 
+        // //****************************************************************************************
+    },
+
+    // Patients (Curative and ASA SCORE > 2)
+    asascoregt2: function (req, res){
+        // var patientgtasa2 = 0;
+        // var queryString = 'SELECT item.intitule ,formulaire_item.valeur_item FROM `item`,`formulaire_item` WHERE (item.intitule = "Résection" && formulaire_item.valeur_item = "1" ) and (item.intitule = "Score ASA" && (formulaire_item.valeur_item = "2" || formulaire_item.valeur_item = "3"))'     
+        // db.query(queryString,function (error,result, fields) 
+        // {
+        //     if (error) throw error;
+        //     for (var i in result) 
+        //     {
+        //       patientgtasa2++;        
+        //     }
+        //     var resObj = {patientgtasa2:patientgtasa2};
+        //     res.json(resObj);  //TODO: Need to modify the scripts to send back total curative patients                             
+        // });
+    },
+
+    // Patients (Curative and OMS > 1)
+    omsgt1: function (req, res){
+        // var patientgtasa2 = 0;
+        // res.json(resObj);   //TODO: Need to modify the scripts to send back total curative patients 
+    
+        // var queryString = 'SELECT item.intitule ,formulaire_item.valeur_item FROM `item`,`formulaire_item` WHERE (item.intitule = "Résection" && formulaire_item.valeur_item = "1" ) and (item.intitule = "Score ASA" && (formulaire_item.valeur_item = "2" || formulaire_item.valeur_item = "3"))'     
+        // db.query(queryString,function (error,result, fields) 
+        // {
+        //     if (error) throw error;
+        //     for (var i in result) 
+        //     {
+        //       patientgtasa2++;        
+        //     }
+        //     var resObj = {patientgtasa2:patientgtasa2};
+        //     res.json(resObj);   //TODO: Need to modify the scripts to send back total curative patients                            
+        // });
+    },
+
+    //Patients (Curative and (% Underweight (BMI <18) /% Overweight (BMI> 30)))
+    bmi: function (req, res){
+        // var patientgtasa2 = 0;
+        // var queryString = 'SELECT item.intitule ,formulaire_item.valeur_item FROM `item`,`formulaire_item` WHERE (item.intitule = "Résection" && formulaire_item.valeur_item = "1" ) and (item.intitule = "Score ASA" && (formulaire_item.valeur_item = "2" || formulaire_item.valeur_item = "3"))'     
+        // db.query(queryString,function (error,result, fields) 
+        // {
+        //     if (error) throw error;
+        //     for (var i in result) 
+        //     {
+        //       patientgtasa2++;        
+        //     }
+        //     var resObj = {patientgtasa2:patientgtasa2};
+        //     res.json(resObj);   //TODO: Need to modify the scripts to send back total curative patients                            
+        // });
     }
-    res.send(asaResult); //json
 };
+   
+module.exports = Patients;
