@@ -24,25 +24,3 @@ module.exports = function(app) {
     .get(patients.bmi);
 
 };
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
