@@ -14,7 +14,7 @@ var patientRoutes = require('./api/routes/patientRoutes');
 patientRoutes(app); //register the rout
 
 //importing patient routes
-var patientRoutes = require('./api/routes/globalViewRoutes'); 
+var patientRoutes = require('./api/routes/globalRoutes'); 
 patientRoutes(app); //register the route
 
 // TODO: importing other routes
