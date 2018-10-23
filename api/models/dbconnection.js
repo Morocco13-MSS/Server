@@ -4,7 +4,7 @@ var mysql = require('mysql');
 console.log('Connecting to the database.....');
 var connection = mysql.createConnection({
     database: 'mssDB',
-    host: "localhost",
+    host: "127.0.0.1",
     user: "root",
     password: "abcd1234!"
 });
