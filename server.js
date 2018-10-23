@@ -9,6 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+//importing global view routes
+var globalRoutes = require('./api/routes/globalRoutes'); 
+globalRoutes(app); //register the route
+
 //importing patient routes
 var patientRoutes = require('./api/routes/patientRoutes'); 
 patientRoutes(app); //register the route
