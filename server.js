@@ -17,6 +17,10 @@ globalRoutes(app); //register the route
 var patientRoutes = require('./api/routes/patientRoutes'); 
 patientRoutes(app); //register the route
 
+//importing funnel plot mortality routes
+var fpmRoutes = require('./api/routes/funnelPlotMortalityRoutes'); 
+fpmRoutes(app); //register the route
+
 // TODO: importing other routes
 // ...
 
