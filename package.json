@@ -6,8 +6,12 @@
         "connect": "^3.6.6",
         "cors": "^2.8.4",
         "express": "^4.16.4",
+        "fsp": "^0.1.2",
         "mysql": "^2.16.0",
-        "request": "^2.88.0"
+        "node-rscript": "0.0.2",
+        "r-script": "0.0.3",
+        "request": "^2.88.0",
+        "underscore": "^1.9.1"
     },
     "scripts": {},
     "eslintConfig": {},

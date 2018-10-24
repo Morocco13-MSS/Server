@@ -13,6 +13,10 @@ app.use(cors());
 var patientRoutes = require('./api/routes/patientRoutes'); 
 patientRoutes(app); //register the route
 
+//importing bilan peroperatoire routes
+var bilanPeroperatoireRoutes = require('./api/routes/bilanPeroperatoireRoutes'); 
+bilanPeroperatoireRoutes(app); //register the route
+
 // TODO: importing other routes
 // ...
 
