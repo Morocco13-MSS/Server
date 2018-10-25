@@ -143,7 +143,7 @@ var Patients = {
     //     //userLevel  0-doc, 1-unit, 2-all
     //     //userId (Doctor Id or respective unitId)
     //     req.query.userLevel = 0;
-    //     req.query.userId = 12;
+    //     req.query.userId = 8;
     //     //TODO: Rememove above lines
     //     /**********************************************************************************/
         var omsgrt1 = 0;
@@ -205,8 +205,8 @@ var Patients = {
         // req.query.formType = "E";
         // //userLevel  0-doc, 1-unit, 2-all
         // //userId (Doctor Id or respective unitId)
-        // req.query.userLevel = 0;
-        // req.query.userId = 12;
+        // req.query.userLevel = 2;
+        // req.query.userId = 3;
         // //TODO: Rememove above lines
         // /**********************************************************************************/
         var totalPatients = 0;
@@ -240,10 +240,10 @@ var Patients = {
 
             for (var i in result) 
             {
-                console.log("Code:" + result[i].Code);
-                totalPatients++;                
+                totalPatients++;
+                console.log("Code:" + result[i].Code);                                
                 if(result[i].Code == "q13_item") 
-                {
+                {                    
                     console.log("BMI:"+result[i].Value);
                     //BMI data
                     if(result[i].Value == 999){
@@ -257,7 +257,8 @@ var Patients = {
                     }                
                 }
                 else //q15_item
-                {   //Data is related to percentage of weight loss
+                {                 
+                    //Data is related to percentage of weight loss
                     console.log("Weight Loss:"+result[i].Value)
                     if(result[i].Value == 999){
                         missingwloss++;
@@ -270,6 +271,7 @@ var Patients = {
                     }
                 }
             }
+            totalPatients = totalPatients/2;
             var resObj = {totalPatients:totalPatients,
                 bmilt18:bmilt18,
                 bmigt30:bmigt30,
