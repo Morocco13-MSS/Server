@@ -9,34 +9,29 @@ var bilanPeroperatoire = {
     tdmThorax: function (req, res) {
         /********************************************************* */  
         //TODO: Remove the below json object and get it as input
+
+        
+        // var reqObj = {
+        //     startDate: req.query.startDate,
+        //     endDate: req.query.endDate,
+        //     formType: req.query.formType,
+        //     userLevel: req.query.userLevel,
+        //     userId :req.query.userId,
+        // };
+        
         var startDate = "2018-01-01";
         var endDate = "2019-01-01";
-        
-        var reqObj = {
-            startDate: req.query.startDate,
-            endDate: req.query.endDate,
-            formType: req.query.formType,
-            userLevel: req.query.userLevel,
-            userId :req.query.userId,
-        }; 
+        var formType = "E";
+        var userLevel = "0";
+        var userId = "8";
+
         /********************************************************* */
-       var out = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/colonPreopTdmThorax.R")
-        .data()
+        var out=R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/colonPreopTdmThorax.R")
+        .data("2018-01-01")
         .call(function(err, a) {
             if (err) throw err;
-            res.json(a);
+            res.json(a[0]);
         });
-        
-        
-
-    
-
-        
-
-        var totalPatients = 0;
-        var adherent = 0;
-        var nonAdherent = 0;
-        var missing = 0;
 
 
         }
