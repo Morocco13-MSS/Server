@@ -17,6 +17,10 @@ globalRoutes(app); //register the route
 var patientRoutes = require('./api/routes/patientRoutes'); 
 patientRoutes(app); //register the route
 
+//importing bp routes
+var bilanPeroperatoireRoutes = require('./api/routes/bilanPeroperatoireRoutes'); 
+bilanPeroperatoireRoutes(app); //register the route
+
 // TODO: importing other routes
 // ...
 
