@@ -19,18 +19,18 @@ var bilanPeroperatoire = {
         //     userId :req.query.userId,
         // };
         
-        var startDate = "2018-01-01";
-        var endDate = "2019-01-01";
-        var formType = "E";
-        var userLevel = "0";
-        var userId = "8";
+        req.query.startDate = "2018-01-01";
+        req.query.endDate = "2019-01-01";
+        req.query.formType = "E";
+        req.query.userLevel = 3;
+        req.query.userId = 2;
 
         /********************************************************* */
         var out=R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/colonPreopTdmThorax.R")
-        .data("2018-01-01")
-        .call(function(err, a) {
-            if (err) throw err;
-            res.json(a[0]);
+            .data(req.query.startDate,req.query.endDate)
+            .call(function(err, a) {
+                if (err) throw err;
+                res.json(a[0]);
         });
 
 
