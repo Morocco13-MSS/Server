@@ -7,8 +7,16 @@ module.exports = function(app) {
 
     var bpData = require('../controllers/bilanPeroperatoireController');
 
-    // API for Global View ROW 2
-    app.route('/curative/tdmThorax')
-    .get(bpData.tdmThorax);
+    // API for  MDT
+    app.route('/curative/mdt')
+    .get(bpData.mdt);
+
+    // API for  TDM Thoracique
+    app.route('/curative/tdmThoracique')
+    .get(bpData.tdmThoracique);
     
+    // API for TDM Abdominale
+    app.route('/curative/tdmAbdominale')
+    .get(bpData.tdmAbdominale);
+
 };
