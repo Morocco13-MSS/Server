@@ -6,6 +6,10 @@ module.exports = function(app) {
     // convert it to JSON and return it to the route.
 
     var bpData = require('../controllers/bilanPeroperatoireController');
+    
+    // API for  MDT
+    app.route('/curative/tumeur')
+    .get(bpData.mdt);
 
     // API for  MDT
     app.route('/curative/mdt')
