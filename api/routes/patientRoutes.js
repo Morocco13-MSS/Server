@@ -20,7 +20,7 @@ module.exports = function(app) {
     .get(patients.omsgt1);
 
     // API for ROW-6,Patients (Curative and (% Underweight (BMI <18) /% Overweight (BMI> 30)))
-    app.route('/patients/curative/bmi')
-    .get(patients.bmi);
+    app.route('/patients/curative/bmi_wtloss')
+    .get(patients.bmi_wtloss);
 
 };
