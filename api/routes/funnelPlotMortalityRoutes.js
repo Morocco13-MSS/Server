@@ -2,13 +2,30 @@
 
 module.exports = function(app) {
 
-    // Use Global View controller to pull data from the model (MySQL DB), 
-    // convert it to JSON and return it to the route.
-
     var fpmData = require('../controllers/funnelPlotMortalityController');
 
-    // API for Global View ROW 2
-    app.route('/fpm')
-    .get(fpmData.fpm);
+    // API for funnel plot mortality scatter
+    app.route('/fpm/scatter')
+    .get(fpmData.fpms);
+
+    // API for funnel plot mortality benchmark aka overall proportion of mortality rate
+    app.route('/fpm/benchmark')
+    .get(fpmData.fpmb);
+
+    // API for funnel plot mortality up aka large confidence interval upper bound
+    app.route('/fpm/up')
+    .get(fpmData.fpmu);
+
+    // API for funnel plot mortality lo aka large confidence interval lower bound
+    app.route('/fpm/lo')
+    .get(fpmData.fpml);
+
+    // API for funnel plot mortality up2 aka small confidence interval upper bound
+    app.route('/fpm/up2')
+    .get(fpmData.fpmu2);
+
+    // API for funnel plot mortality up2 aka small confidence interval lower bound
+    app.route('/fpm/lo2')
+    .get(fpmData.fpml2);
     
 };
