@@ -7,17 +7,17 @@ var Patients = {
     //Patients (Curative and age>70)
     agegt70: function (req, res) {
 
-        /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 2;
-        req.query.userId = 3;
-        //TODO: Rememove above lines
-        /**********************************************************************************/
+        // /**********************************************************************************/
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 0;
+        // req.query.userId = 12;
+        // //TODO: Rememove above lines
+        // /**********************************************************************************/
 
         var gtAge70 = 0;
         var totalPatients = 0;
@@ -70,17 +70,17 @@ var Patients = {
     // Patients (Curative and ASA SCORE > 2)
     asascoregt2: function (req, res){
 
-        /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 1;
-        req.query.userId = 3;
-        //TODO: Rememove above lines
-        /**********************************************************************************/
+        // /**********************************************************************************/
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 0;
+        // req.query.userId = 12;
+        // //TODO: Rememove above lines
+        // /**********************************************************************************/
        
         var asagt2 = 0;
         var totalPatients = 0;
@@ -135,17 +135,17 @@ var Patients = {
 
     // Patients (Curative and OMS > 1)
     omsgt1: function (req, res){
-       /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 2;
-        req.query.userId = 3;
-        //TODO: Rememove above lines
-        /**********************************************************************************/
+    //    /**********************************************************************************/
+    //     //TODO: only required for unit testing
+    //     req.query.startDate = "2018-01-01";
+    //     req.query.endDate = "2019-01-01";
+    //     req.query.formType = "E";
+    //     //userLevel  0-doc, 1-unit, 2-all
+    //     //userId (Doctor Id or respective unitId)
+    //     req.query.userLevel = 0;
+    //     req.query.userId = 12;
+    //     //TODO: Rememove above lines
+    //     /**********************************************************************************/
         var omsgrt1 = 0;
         var totalPatients = 0;
         var missing=0;
@@ -198,17 +198,17 @@ var Patients = {
 
     //Patients (Curative and (% Underweight (BMI <18) /% Overweight (BMI> 30)))
     bmi_wtloss: function (req, res){
-        /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 1;
-        req.query.userId = 3;
-        //TODO: Rememove above lines
-        /**********************************************************************************/
+        // /**********************************************************************************/
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 0;
+        // req.query.userId = 12;
+        // //TODO: Rememove above lines
+        // /**********************************************************************************/
         var totalPatients = 0;
         var bmigt30 = 0;
         var bmilt18 = 0;
