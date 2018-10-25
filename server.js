@@ -10,6 +10,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //importing global view routes
+var localRoutes = require('./api/routes/loginRoutes'); 
+localRoutes(app); //register the route
+
 var globalRoutes = require('./api/routes/globalRoutes'); 
 globalRoutes(app); //register the route
 
