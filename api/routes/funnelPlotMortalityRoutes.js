@@ -27,5 +27,9 @@ module.exports = function(app) {
     // API for funnel plot mortality up2 aka small confidence interval lower bound
     app.route('/fpm/lo2')
     .get(fpmData.fpml2);
+
+    // API for funnel plot mortality missing number (patients without Clavien scores at 90 days)
+    app.route('/fpm/missing')
+    .get(fpmData.fpmMiss);
     
 };
