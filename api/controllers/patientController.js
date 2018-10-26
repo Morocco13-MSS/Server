@@ -197,7 +197,7 @@ var Patients = {
     },
 
     //Patients (Curative and (% Underweight (BMI <18) /% Overweight (BMI> 30)))
-    bmi_wtloss: function (req, res){
+    bmi: function (req, res){
         // /**********************************************************************************/
         // //TODO: only required for unit testing
         // req.query.startDate = "2018-01-01";
