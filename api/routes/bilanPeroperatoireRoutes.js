@@ -7,7 +7,7 @@ module.exports = function(app) {
 
     var bpData = require('../controllers/bilanPeroperatoireController');
     
-    // API for  MDT
+    // API for  tumeur
     app.route('/preop/tumeur')
     .get(bpData.mdt);
 
