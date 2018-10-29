@@ -3,10 +3,10 @@ var db = require('../models/dbconnection');
 
 //create class
 var Surgery = {
+    //Résection = "Curatif" and % Types de geste ==> Use the "/global/gestType" API
+
     firsLook: function (req, res)
     {
-        //Résection = "Curatif" and % Types de geste ==> Use the "/global/gestType" API
-
         //Résection = "Curatif"	% Voie d'abord (q96_item)
         /**********************************************************************************/
         //TODO: only required for unit testing

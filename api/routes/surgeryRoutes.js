@@ -22,6 +22,9 @@ module.exports = function(app) {
     app.route('/surgery/intraTrans')
     .get(surgeryData.intraTrans);
 
+    app.route('/surgery/radicalityR1')
+    .get(surgeryData.radicalityR1);
+
     app.route('/surgery/averageBloodLoss')
     .get(surgeryData.averageBloodLoss);
 
