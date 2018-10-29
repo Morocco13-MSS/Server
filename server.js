@@ -24,6 +24,10 @@ patientRoutes(app); //register the route
 var bilanPeroperatoireRoutes = require('./api/routes/bilanPeroperatoireRoutes'); 
 bilanPeroperatoireRoutes(app); //register the route
 
+//importing surgery routes
+var surgeryRoutes = require('./api/routes/surgeryRoutes');
+surgeryRoutes(app);
+
 // TODO: importing other routes
 // ...
 
