@@ -28,6 +28,10 @@ bilanPeroperatoireRoutes(app); //register the route
 var fpmRoutes = require('./api/routes/funnelPlotMortalityRoutes'); 
 fpmRoutes(app); //register the route
 
+//importing surgery routes
+var surgeryRoutes = require('./api/routes/surgeryRoutes');
+surgeryRoutes(app);
+
 // TODO: importing other routes
 // ...
 
