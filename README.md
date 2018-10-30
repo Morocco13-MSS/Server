@@ -18,3 +18,12 @@ How to delete the existing database and create a new one:
   mysql>CREATE DATABASE new_database_name
 - Come out of the mysql login and then
    mysql -u root -p  <new_database_name> < yasmine.sql
+---------------------------------------------------------------------------------
+Potential Issues with r-script
+
+You may get this error
+```
+Cannot read property 'data' of undefined
+```
+If so please see https://github.com/joshkatz/r-script/issues/27
+

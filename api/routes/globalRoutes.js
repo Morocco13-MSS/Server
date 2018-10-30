@@ -11,4 +11,8 @@ module.exports = function(app) {
     app.route('/global')
     .get(globalData.global);
     
+    // API for Global patients (Type of Gestation)
+    app.route('/global/gestType')
+    .get(globalData.gestType);
+
 };
