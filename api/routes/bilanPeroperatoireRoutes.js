@@ -23,13 +23,4 @@ module.exports = function(app) {
     app.route('/preop/tdmAbdominale')
     .get(bpData.tdmAbdominale);
 
-    //neoAdjuvant treatment
-    app.route('/preop/neoAdjuvant')
-    .get(bpData.neoAdjuvant);
-
-    //Days between end of neo-adjavant treatment and surgery treatment
-    app.route('/preop/daysBeforeSurgery')
-    .get(bpData.daysBeforeSurgery);
-    
-
 };
