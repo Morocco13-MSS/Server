@@ -13,6 +13,8 @@ module.exports = function(app) {
     app.route('/treatmentAdjav/timebwsurgeryAndAdjuv')
     .get(treatmentAdjav.timebwsurgeryAndAdjuv);
 
-    
+     app.route('/treatmentAdjav/chemo_rct_withBloodCount')
+    .get(treatmentAdjav.chemo_rct_withBloodCount);
+  
 
 };

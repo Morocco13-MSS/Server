@@ -295,59 +295,59 @@ var Surgery = {
     //  req.query.formType = "E";
     //  //userLevel  0-doc, 1-unit, 2-all
     //  //userId (Doctor Id or respective unitId)
-    //  req.query.userLevel = 0;
-    //  req.query.userId = 8;
+    //  req.query.userLevel = 1;
+    //  req.query.userId = 3;
     //  //TODO: Rememove above lines
     //  /**********************************************************************************/
-    //  var totalPatients = 0;
-    //  var yesCount = 0;
-    //  var noCount = 0;
-    //  var missing = 0;
+     var totalPatients = 0;
+     var yesCount = 0;
+     var noCount = 0;
+     var missing = 0;
              
-    //  var sqlQuery = "";        
+     var sqlQuery = "";        
  
-    //  if(req.query.userLevel == 0) //For a particular doctor
-    //  {
-    //      console.log("Surgery (Query Resection associated): Doctor Level View "+ req.query.userLevel);
-    //      sqlQuery = 'SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q146_item"  and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'") and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1"   and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id = "'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item)    and item.id=formulaire_item.id_item  and formulaire.id = formulaire_item.id_formulaire )and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
-    //  }
-    //  else if(req.query.userLevel == 1) //Across the unit/hospital
-    //  {
-    //      console.log("Surgery (Query Resection associated):: Doctor's Hospital view "+ req.query.userLevel);
-    //      sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q147_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
-    //  }
-    //  else //Across all the units/hospitals
-    //  {
-    //      console.log("Surgery (Query Resection associated):: All Hospitals view "+ req.query.userLevel);
-    //      sqlQuery='SELECT item.code , item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q147_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'") and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
-    //  }        
-    //  db.query(sqlQuery,function (error,result, fields) 
-    //  {
-    //      if (error) throw error;
+     if(req.query.userLevel == 0) //For a particular doctor
+     {
+         console.log("Surgery (Query Resection associated): Doctor Level View "+ req.query.userLevel);
+         sqlQuery = 'SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q152_item"  and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'") and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1"   and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id = "'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item)    and item.id=formulaire_item.id_item  and formulaire.id = formulaire_item.id_formulaire )and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+     }
+     else if(req.query.userLevel == 1) //Across the unit/hospital
+     {
+         console.log("Surgery (Query Resection associated):: Doctor's Hospital view "+ req.query.userLevel);
+         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q152_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+     }
+     else //Across all the units/hospitals
+     {
+         console.log("Surgery (Query Resection associated):: All Hospitals view "+ req.query.userLevel);
+         sqlQuery='SELECT item.code , item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q152_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'") and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+     }        
+     db.query(sqlQuery,function (error,result, fields) 
+     {
+         if (error) throw error;
  
-    //      for (var i in result) 
-    //      {
-    //          totalPatients++;
-    //          console.log("Data:" + result[i].Value);
-    //          switch(result[i].Value)
-    //          {
-    //              case '0': noCount++;
-    //                      break;
-    //              case '1': yesCount++;
-    //                      break;
-    //              default: missing++
-    //                      break;
-    //          };              
+         for (var i in result) 
+         {
+             totalPatients++;
+             console.log("Data:" + result[i].Value);
+             switch(result[i].Value)
+             {
+                 case '0': noCount++;
+                         break;
+                 case '1': yesCount++;
+                         break;
+                 default: missing++
+                         break;
+             };              
  
-    //      }                
-    //      var resObj = {
-    //          totalPatients:totalPatients,
-    //          noCount:noCount,
-    //          yesCount:yesCount,
-    //          missing:missing,                              
-    //          };
-    //      res.json(resObj);                 
-    //  });
+         }                
+         var resObj = {
+             totalPatients:totalPatients,
+             noCount:noCount,
+             yesCount:yesCount,
+             missing:missing,                              
+             };
+         res.json(resObj);                 
+     });
     }
     ,
 
