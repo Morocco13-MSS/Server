@@ -9,15 +9,15 @@ var Surgery = {
     {
         //Résection = "Curatif"	% Voie d'abord (q96_item)
         /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 0;
-        req.query.userId = 8;
-        //TODO: Rememove above lines
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 0;
+        // req.query.userId = 8;
+        // //TODO: Rememove above lines
         /**********************************************************************************/
         var totalPatients = 0;
         var laparotomie = 0;
@@ -79,15 +79,15 @@ var Surgery = {
     resecAsso: function (req, res)
     {            
         /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 0;
-        req.query.userId = 8;
-        //TODO: Rememove above lines
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 0;
+        // req.query.userId = 8;
+        // //TODO: Rememove above lines
         /**********************************************************************************/
         var totalPatients = 0;
         var noResecCount = 0;
@@ -157,15 +157,15 @@ var Surgery = {
     perforation: function (req, res)
     {            
      /**********************************************************************************/
-     //TODO: only required for unit testing
-     req.query.startDate = "2018-01-01";
-     req.query.endDate = "2019-01-01";
-     req.query.formType = "E";
-     //userLevel  0-doc, 1-unit, 2-all
-     //userId (Doctor Id or respective unitId)
-     req.query.userLevel = 1;
-     req.query.userId = 3;
-     //TODO: Rememove above lines
+    //  //TODO: only required for unit testing
+    //  req.query.startDate = "2018-01-01";
+    //  req.query.endDate = "2019-01-01";
+    //  req.query.formType = "E";
+    //  //userLevel  0-doc, 1-unit, 2-all
+    //  //userId (Doctor Id or respective unitId)
+    //  req.query.userLevel = 1;
+    //  req.query.userId = 3;
+    //  //TODO: Rememove above lines
      /**********************************************************************************/
      var totalPatients = 0;
      var yesCount = 0;
@@ -223,15 +223,15 @@ var Surgery = {
     contamination: function (req, res)
     {            
      /**********************************************************************************/
-     //TODO: only required for unit testing
-     req.query.startDate = "2018-01-01";
-     req.query.endDate = "2019-01-01";
-     req.query.formType = "E";
-     //userLevel  0-doc, 1-unit, 2-all
-     //userId (Doctor Id or respective unitId)
-     req.query.userLevel = 0;
-     req.query.userId = 8;
-     //TODO: Rememove above lines
+    //  //TODO: only required for unit testing
+    //  req.query.startDate = "2018-01-01";
+    //  req.query.endDate = "2019-01-01";
+    //  req.query.formType = "E";
+    //  //userLevel  0-doc, 1-unit, 2-all
+    //  //userId (Doctor Id or respective unitId)
+    //  req.query.userLevel = 0;
+    //  req.query.userId = 8;
+    //  //TODO: Rememove above lines
      /**********************************************************************************/
      var totalPatients = 0;
      var yesCount = 0;
@@ -418,15 +418,15 @@ var Surgery = {
   radicalityR1: function (req, res)
   {            
    /**********************************************************************************/
-   //TODO: only required for unit testing
-   req.query.startDate = "2018-01-01";
-   req.query.endDate = "2019-01-01";
-   req.query.formType = "E";
-   //userLevel  0-doc, 1-unit, 2-all
-   //userId (Doctor Id or respective unitId)
-   req.query.userLevel = 0;
-   req.query.userId = 8;
-   //TODO: Rememove above lines
+//    //TODO: only required for unit testing
+//    req.query.startDate = "2018-01-01";
+//    req.query.endDate = "2019-01-01";
+//    req.query.formType = "E";
+//    //userLevel  0-doc, 1-unit, 2-all
+//    //userId (Doctor Id or respective unitId)
+//    req.query.userLevel = 0;
+//    req.query.userId = 8;
+//    //TODO: Rememove above lines
    /**********************************************************************************/
    var totalPatients = 0;
    var radicalityR1 = 0;
@@ -487,15 +487,15 @@ var Surgery = {
   lumphNodeExamCount: function (req, res)
   {            
    /**********************************************************************************/
-   //TODO: only required for unit testing
-   req.query.startDate = "2018-01-01";
-   req.query.endDate = "2019-01-01";
-   req.query.formType = "E";
-   //userLevel  0-doc, 1-unit, 2-all
-   //userId (Doctor Id or respective unitId)
-   req.query.userLevel = 2;
-   req.query.userId = 3;
-   //TODO: Rememove above lines
+//    //TODO: only required for unit testing
+//    req.query.startDate = "2018-01-01";
+//    req.query.endDate = "2019-01-01";
+//    req.query.formType = "E";
+//    //userLevel  0-doc, 1-unit, 2-all
+//    //userId (Doctor Id or respective unitId)
+//    req.query.userLevel = 2;
+//    req.query.userId = 3;
+//    //TODO: Rememove above lines
    /**********************************************************************************/
    var totalPatients = 0;
    var examinCountgt12 = 0;

@@ -19,8 +19,8 @@ module.exports = function(app) {
     app.route('/surgery/contamination')
     .get(surgeryData.contamination);
 
-    app.route('/surgery/intraTrans')
-    .get(surgeryData.intraTrans);
+    // app.route('/surgery/intraTrans') //todo
+    // .get(surgeryData.intraTrans);
 
     app.route('/surgery/radicalityR1')
     .get(surgeryData.radicalityR1);
