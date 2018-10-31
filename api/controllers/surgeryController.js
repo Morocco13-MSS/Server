@@ -8,17 +8,17 @@ var Surgery = {
     firsLook: function (req, res)
     {
         //Résection = "Curatif"	% Voie d'abord (q96_item)
-        /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 0;
-        req.query.userId = 8;
-        //TODO: Rememove above lines
-        /**********************************************************************************/
+        // /**********************************************************************************/
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 1;
+        // req.query.userId = 3;
+        // //TODO: Rememove above lines
+        // /**********************************************************************************/
         var totalPatients = 0;
         var laparotomie = 0;
         var laparoscopie = 0;
@@ -30,12 +30,12 @@ var Surgery = {
         if(req.query.userLevel == 0) //For a particular doctor
         {
             console.log("Surgery (Query First loop opinion): Doctor Level View "+ req.query.userLevel);
-            sqlQuery = 'SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q96_item"  and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'") and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1"   and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id = "'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item)    and item.id=formulaire_item.id_item  and formulaire.id = formulaire_item.id_formulaire )and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+            sqlQuery = 'SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q96_item"  and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'") and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.code="q231_item" and formulaire_item.valeur_item < 5 and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id = "'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item)    and item.id=formulaire_item.id_item  and formulaire.id = formulaire_item.id_formulaire )and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
         }
         else if(req.query.userLevel == 1) //Across the unit/hospital
         {
             console.log("Surgery (Query First loop opinion):: Doctor's Hospital view "+ req.query.userLevel);
-            sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q96_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+            sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q96_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.code="q231_item" and formulaire_item.valeur_item < 5 and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
         }
         else //Across all the units/hospitals
         {
@@ -78,17 +78,17 @@ var Surgery = {
     //Résection = "Curatif"	% Résection associée 
     resecAsso: function (req, res)
     {            
-        /**********************************************************************************/
-        //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        //userLevel  0-doc, 1-unit, 2-all
-        //userId (Doctor Id or respective unitId)
-        req.query.userLevel = 0;
-        req.query.userId = 8;
-        //TODO: Rememove above lines
-        /**********************************************************************************/
+        // /**********************************************************************************/
+        // //TODO: only required for unit testing
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // //userLevel  0-doc, 1-unit, 2-all
+        // //userId (Doctor Id or respective unitId)
+        // req.query.userLevel = 1;
+        // req.query.userId = 3;
+        // //TODO: Rememove above lines
+        // /**********************************************************************************/
         var totalPatients = 0;
         var noResecCount = 0;
         var localResec = 0;
@@ -107,7 +107,7 @@ var Surgery = {
         else if(req.query.userLevel == 1) //Across the unit/hospital
         {
             console.log("Surgery (Query Resection associated):: Doctor's Hospital view "+ req.query.userLevel);
-            sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q135_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+            sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q135_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
         }
         else //Across all the units/hospitals
         {
@@ -156,17 +156,17 @@ var Surgery = {
     //% Peforation
     perforation: function (req, res)
     {            
-     /**********************************************************************************/
-     //TODO: only required for unit testing
-     req.query.startDate = "2018-01-01";
-     req.query.endDate = "2019-01-01";
-     req.query.formType = "E";
-     //userLevel  0-doc, 1-unit, 2-all
-     //userId (Doctor Id or respective unitId)
-     req.query.userLevel = 1;
-     req.query.userId = 3;
-     //TODO: Rememove above lines
-     /**********************************************************************************/
+    //  /**********************************************************************************/
+    //  //TODO: only required for unit testing
+    //  req.query.startDate = "2018-01-01";
+    //  req.query.endDate = "2019-01-01";
+    //  req.query.formType = "E";
+    //  //userLevel  0-doc, 1-unit, 2-all
+    //  //userId (Doctor Id or respective unitId)
+    //  req.query.userLevel = 1;
+    //  req.query.userId = 3;
+    //  //TODO: Rememove above lines
+    //  /**********************************************************************************/
      var totalPatients = 0;
      var yesCount = 0;
      var noCount = 0;
@@ -182,7 +182,7 @@ var Surgery = {
      else if(req.query.userLevel == 1) //Across the unit/hospital
      {
          console.log("Surgery (Query Perforation):: Doctor's Hospital view "+ req.query.userLevel);
-         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q146_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q146_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
      }
      else //Across all the units/hospitals
      {
@@ -222,16 +222,16 @@ var Surgery = {
     //% Contamination
     contamination: function (req, res)
     {            
-     /**********************************************************************************/
-     //TODO: only required for unit testing
-     req.query.startDate = "2018-01-01";
-     req.query.endDate = "2019-01-01";
-     req.query.formType = "E";
-     //userLevel  0-doc, 1-unit, 2-all
-     //userId (Doctor Id or respective unitId)
-     req.query.userLevel = 0;
-     req.query.userId = 8;
-     //TODO: Rememove above lines
+    //  /**********************************************************************************/
+    //  //TODO: only required for unit testing
+    //  req.query.startDate = "2018-01-01";
+    //  req.query.endDate = "2019-01-01";
+    //  req.query.formType = "E";
+    //  //userLevel  0-doc, 1-unit, 2-all
+    //  //userId (Doctor Id or respective unitId)
+    //  req.query.userLevel = 1;
+    //  req.query.userId = 3;
+    //  //TODO: Rememove above lines
      /**********************************************************************************/
      var totalPatients = 0;
      var yesCount = 0;
@@ -248,7 +248,7 @@ var Surgery = {
      else if(req.query.userLevel == 1) //Across the unit/hospital
      {
          console.log("Surgery (Query contamination):: Doctor's Hospital view "+ req.query.userLevel);
-         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q147_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q147_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
      }
      else //Across all the units/hospitals
      {
@@ -354,17 +354,17 @@ var Surgery = {
     //Mean Pertes sanguines moyennes (Average Blood Loss)
     averageBloodLoss: function (req, res)
     {            
-     /**********************************************************************************/
-     //TODO: only required for unit testing
-     req.query.startDate = "2018-01-01";
-     req.query.endDate = "2019-01-01";
-     req.query.formType = "E";
-     //userLevel  0-doc, 1-unit, 2-all
-     //userId (Doctor Id or respective unitId)
-     req.query.userLevel = 1;
-     req.query.userId = 8;
-     //TODO: Rememove above lines
-     /**********************************************************************************/
+    //  /**********************************************************************************/
+    //  //TODO: only required for unit testing
+    //  req.query.startDate = "2018-01-01";
+    //  req.query.endDate = "2019-01-01";
+    //  req.query.formType = "E";
+    //  //userLevel  0-doc, 1-unit, 2-all
+    //  //userId (Doctor Id or respective unitId)
+    //  req.query.userLevel = 1;
+    //  req.query.userId = 3;
+    //  //TODO: Rememove above lines
+    //  /**********************************************************************************/
      var totalPatients = 0;
      var averageBLoss = 0;
      var missing = 0;
@@ -379,7 +379,7 @@ var Surgery = {
      else if(req.query.userLevel == 1) //Across the unit/hospital
      {
          console.log("Surgery (Query  Average Blood Loss):: Doctor's Hospital view "+ req.query.userLevel);
-         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q149_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+         sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q149_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
      }
      else //Across all the units/hospitals
      {
@@ -417,17 +417,17 @@ var Surgery = {
   //radicality R1 percentage
   radicalityR1: function (req, res)
   {            
-   /**********************************************************************************/
-   //TODO: only required for unit testing
-   req.query.startDate = "2018-01-01";
-   req.query.endDate = "2019-01-01";
-   req.query.formType = "E";
-   //userLevel  0-doc, 1-unit, 2-all
-   //userId (Doctor Id or respective unitId)
-   req.query.userLevel = 0;
-   req.query.userId = 8;
-   //TODO: Rememove above lines
-   /**********************************************************************************/
+//    /**********************************************************************************/
+//    //TODO: only required for unit testing
+//    req.query.startDate = "2018-01-01";
+//    req.query.endDate = "2019-01-01";
+//    req.query.formType = "E";
+//    //userLevel  0-doc, 1-unit, 2-all
+//    //userId (Doctor Id or respective unitId)
+//    req.query.userLevel = 2;
+//    req.query.userId = 3;
+//    //TODO: Rememove above lines
+//    /**********************************************************************************/
    var totalPatients = 0;
    var radicalityR1 = 0;
    var others = 0;
@@ -443,7 +443,7 @@ var Surgery = {
    else if(req.query.userLevel == 1) //Across the unit/hospital
    {
        console.log("Surgery (Query  radicalityR1):: Doctor's Hospital view "+ req.query.userLevel);
-       sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q202_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+       sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q202_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
    }
    else //Across all the units/hospitals
    {
@@ -486,17 +486,17 @@ var Surgery = {
   //Number of lymph nodes examined
   lumphNodeExamCount: function (req, res)
   {            
-   /**********************************************************************************/
-   //TODO: only required for unit testing
-   req.query.startDate = "2018-01-01";
-   req.query.endDate = "2019-01-01";
-   req.query.formType = "E";
-   //userLevel  0-doc, 1-unit, 2-all
-   //userId (Doctor Id or respective unitId)
-   req.query.userLevel = 2;
-   req.query.userId = 3;
-   //TODO: Rememove above lines
-   /**********************************************************************************/
+//    /**********************************************************************************/
+//    //TODO: only required for unit testing
+//    req.query.startDate = "2018-01-01";
+//    req.query.endDate = "2019-01-01";
+//    req.query.formType = "E";
+//    //userLevel  0-doc, 1-unit, 2-all
+//    //userId (Doctor Id or respective unitId)
+//    req.query.userLevel = 2;
+//    req.query.userId = 3;
+//    //TODO: Rememove above lines
+//    /**********************************************************************************/
    var totalPatients = 0;
    var examinCountgt12 = 0;
    var missing = 0;
@@ -511,7 +511,7 @@ var Surgery = {
    else if(req.query.userLevel == 1) //Across the unit/hospital
    {
        console.log("Surgery (Query  lumphNodeExamCount):: Doctor's Hospital view "+ req.query.userLevel);
-       sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q193_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item where formulaire_item.valeur_item=medecin.id and medecin.id_service="'+ req.query.userId +'" and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
+       sqlQuery='SELECT item.code as Code, item.intitule,formulaire_item.valeur_item as Value,formulaire_item.id_formulaire FROM `item`,`formulaire_item`,formulaire,organe WHERE item.code = "q193_item" and organe.code = "'+ req.query.formType +'" and (formulaire.date_creation BETWEEN "'+ req.query.startDate + '" AND "'+ req.query.endDate +'")  and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,item,formulaire where item.intitule="Résection" and formulaire_item.valeur_item="1" and formulaire_item.id_formulaire in (select formulaire_item.id_formulaire from formulaire_item,medecin,item,utilisateur where formulaire_item.valeur_item=medecin.id and utilisateur.id_service="'+ req.query.userId +'" and utilisateur.doctorCode= medecin.doctorCode and item.intitule="Opérateur1" AND item.id=formulaire_item.id_item ) and item.id=formulaire_item.id_item and formulaire.id = formulaire_item.id_formulaire ) and item.id=formulaire_item.id_item and formulaire.id_organe=organe.id and formulaire.id=formulaire_item.id_formulaire';
    }
    else //Across all the units/hospitals
    {
