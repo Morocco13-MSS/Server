@@ -31,5 +31,9 @@ module.exports = function(app) {
     // API for funnel plot mortality missing number (patients without Clavien scores at 90 days)
     app.route('/fpm/missing')
     .get(fpmData.fpmMiss);
+
+    // API for dot that is the user's on the scatter plot
+    app.route('/fpm/userDot')
+    .get(fpmData.fpmDot);
     
 };
