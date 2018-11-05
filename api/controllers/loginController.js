@@ -7,14 +7,16 @@ var Login = {
     {
         var reqObj = 
         {
-            userName:"medecin_ino",
+            userName:"majbar",
             passwd:"XYZ"
         };
-        var sqlQuery = 'select id as Id, id_service as UnitId  from utilisateur where  utilisateur.nom_utilisateur ="'+ reqObj.userName +'"';         
+        //TODO: No vaidation of password is done
+        var sqlQuery = 'select nom_prenom as Name ,id as Id, id_service as UnitId  from utilisateur where  utilisateur.nom_utilisateur ="'+ reqObj.userName +'"';         
         db.query(sqlQuery,function (error,result, fields) 
         {
             if (error) throw error;            
-            var resObj  = {                            
+            var resObj  = { 
+                            name:result[0].Name,                           
                             userId:result[0].Id,
                             UnitId:result[0].UnitId
                           };                            
