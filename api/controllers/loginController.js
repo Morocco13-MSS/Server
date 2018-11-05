@@ -5,13 +5,13 @@ var db = require('../models/dbconnection');
 var Login = {
     login: function (req, res)
     {
-        var reqObj = 
-        {
-            userName:"majbar",
-            passwd:"XYZ"
-        };
+        // var reqObj = 
+        // {
+        //     userName:"majbar",
+        //     passwd:"XYZ"
+        // };
         //TODO: No vaidation of password is done
-        var sqlQuery = 'select nom_prenom as Name ,id as Id, id_service as UnitId  from utilisateur where  utilisateur.nom_utilisateur ="'+ reqObj.userName +'"';         
+        var sqlQuery = 'select nom_prenom as Name ,id as Id, id_service as UnitId  from utilisateur where  utilisateur.nom_utilisateur ="'+ req.query.userName +'"';         
         db.query(sqlQuery,function (error,result, fields) 
         {
             if (error) throw error;            
