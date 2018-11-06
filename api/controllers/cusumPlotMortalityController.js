@@ -4,6 +4,8 @@
 //include the model (DB connection)
 var db = require('../models/dbconnection'); 
 var R = require("r-script");
+var config = require('config');
+var cusumMortalityPath = config.get('RPaths.cusumMortality');
 
 
 //create class
@@ -25,7 +27,7 @@ var cusumMortality = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "cusumLine";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/cusum-mortality.R")
+        var fpmScatter = R(cusumMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -48,7 +50,7 @@ var cusumMortality = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "ucl";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/cusum-mortality.R")
+        var fpmScatter = R(cusumMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -70,7 +72,7 @@ var cusumMortality = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "lcl";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/cusum-mortality.R")
+        var fpmScatter = R(cusumMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -93,7 +95,7 @@ var cusumMortality = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "alerts";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/cusum-mortality.R")
+        var fpmScatter = R(cusumMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -116,7 +118,7 @@ var cusumMortality = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "missing";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/cusum-mortality.R")
+        var fpmScatter = R(cusumMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;

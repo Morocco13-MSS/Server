@@ -1,5 +1,6 @@
 {
     "RPaths": {
-      "fpmMortality": "/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R"
+      "fpmMortality": "/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R",
+      "cusumMortality": "/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/cusum-mortality.R"
       }
 }
