@@ -25,7 +25,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "scatter";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -48,7 +48,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "benchmark";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -70,7 +70,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "up";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -93,7 +93,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "lo";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -116,7 +116,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "up2";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -139,7 +139,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "lo2";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -162,7 +162,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "missing";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;
@@ -185,7 +185,7 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "userIdDot";
-        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+        var fpmScatter = R("C:\Murulidhar\Personal\CSC_ASSIGNMENT\mss-r-code\R-work\funnel-plot-mortality.R")
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
             .call(function(err, a) {
                 if (err) throw err;

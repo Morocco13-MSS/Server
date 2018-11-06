@@ -69,7 +69,8 @@ var TreatmentAdjav = {
                 totalPatients:totalPatients,
                 chemoOrRct:chemoOrRct,
                 others:others,
-                missing:missing
+                missing:missing,
+                note:"Classification of the curative patients with Traitement adjuvant  of type 1 OR 2 and having the Clavien J90 score not equal to 5"
                 };
             res.json(resObj);                 
         });
@@ -139,7 +140,8 @@ var TreatmentAdjav = {
                 totalPatients:totalPatients,
                 lessth6weeks:lessth6weeks,
                 morethan6weeks:morethan6weeks,
-                missing:missing
+                missing:missing,
+                note:"Classification of the curative patients based on the time taken between surgery and adjuvant treatment with adjuvant  treatment of type 1/2 and having the Clavien J90 score not equal to 5"
                 };
             res.json(resObj);                 
         });
@@ -211,7 +213,8 @@ var TreatmentAdjav = {
                 totalPatients:totalPatients,
                 chemoOrRct:chemoOrRct,
                 others:others,
-                missing:missing
+                missing:missing,
+                note:"Classification of the curative patients with Traitement adjuvant of type 1 OR 2 and having the Clavien J90 score not equal to 5 and number of ganglions invaded > 0"                
                 };
             res.json(resObj);                 
         });

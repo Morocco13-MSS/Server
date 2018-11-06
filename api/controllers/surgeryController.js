@@ -68,7 +68,8 @@ var Surgery = {
                 totalPatients:totalPatients,
                 laparotomie:laparotomie,
                 laparoscopie:laparoscopie,
-                laparo_scopie_tomie:laparo_scopie_tomie                                 
+                laparo_scopie_tomie:laparo_scopie_tomie,
+                note:"Classification of the curative patients based on the voie d'abord"
                 };
             res.json(resObj);                 
         });
@@ -146,7 +147,8 @@ var Surgery = {
                 RemoteResec:RemoteResec,
                 localRemoteCnt:localRemoteCnt,
                 naCount:naCount,
-                missing:missing                             
+                missing:missing,
+                note:"Classification of the curative patients based associated resection"                            
                 };
             res.json(resObj);                 
         });
@@ -212,7 +214,8 @@ var Surgery = {
              totalPatients:totalPatients,
              noCount:noCount,
              yesCount:yesCount,
-             missing:missing,                              
+             missing:missing,
+             note:"Classification of the curative patients based on perforation"                              
              };
          res.json(resObj);                 
      });
@@ -278,7 +281,8 @@ var Surgery = {
              totalPatients:totalPatients,
              noCount:noCount,
              yesCount:yesCount,
-             missing:missing,                              
+             missing:missing,
+             note:"Classification of the curative patients based on contamination"
              };
          res.json(resObj);                 
      });
@@ -407,7 +411,8 @@ var Surgery = {
          var resObj = {
              totalPatients:totalPatients,
              averageBLoss:averageBLoss,             
-             missing:missing,                              
+             missing:missing,
+             note:"Average blood loss of the curative patients"                             
              };
          res.json(resObj);                 
      });
@@ -476,7 +481,8 @@ var Surgery = {
            totalPatients:totalPatients,
            radicalityR1:radicalityR1,
            others:others,      
-           missing:missing,                              
+           missing:missing,
+           note:"Classification of curative patients based matching the radicality-R1"
            };
        res.json(resObj);                 
    });   
@@ -533,7 +539,8 @@ var Surgery = {
             
        var resObj = {
            totalPatients:totalPatients,
-           examinCountgt12:examinCountgt12,                              
+           examinCountgt12:examinCountgt12,
+           note:"Classification of curative patients based on number of lymph nodes examined"                            
            };
        res.json(resObj);                 
    });   
