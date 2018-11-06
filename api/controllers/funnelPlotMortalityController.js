@@ -191,6 +191,29 @@ var Fpm = {
                 if (err) throw err;
                 res.json(a)
             });
+    },
+
+    fpmUnitsDots: function (req, res) {
+
+        console.log('Getting inputs...');
+        //TODO: only required for unit testing
+        req.query.startDate = "2018-01-01";
+        req.query.endDate = "2019-01-01";
+        req.query.formType = "E";
+        req.query.userLevel = 2;
+        req.query.userId = 8;
+
+        console.log('These are the inputs: '+req.query.startDate+', '+req.query.endDate+', '+req.query.formType+', '+req.query.userLevel+', '+req.query.userId);
+
+        //TODO: Rememove above lines
+        //TODO: change path to where your path is for your R-script
+        var plotType = "allUnitsDots";
+        var fpmScatter = R("/Users/linjo/Documents/workspace-neon/mss-r-code/R-work/funnel-plot-mortality.R")
+            .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
+            .call(function(err, a) {
+                if (err) throw err;
+                res.json(a)
+            });
     }
     
 };

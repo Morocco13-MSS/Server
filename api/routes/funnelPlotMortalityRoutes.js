@@ -35,5 +35,9 @@ module.exports = function(app) {
     // API for dot that is the user's on the scatter plot
     app.route('/fpm/userDot')
     .get(fpmData.fpmDot);
+
+    // API for dot that is the user's on the scatter plot
+    app.route('/fpm/allUnitsDots')
+    .get(fpmData.fpmUnitsDots);
     
 };
