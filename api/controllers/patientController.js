@@ -60,7 +60,8 @@ var Patients = {
             var resObj = {totalPatients:totalPatients,
                           gtAge70:gtAge70,
                           ltAge70:ltAge70,
-                          missing:missing                     
+                          missing:missing,
+                          info:"Curative patients classification based on the age"
                          };
             res.json(resObj);                 
         }); 
@@ -126,7 +127,8 @@ var Patients = {
             var resObj = {totalPatients:totalPatients,
                           asagt2:asagt2,
                           asalt2:asalt2,
-                          missing:missing                     
+                          missing:missing,
+                          info:"Curative patients classification based on the ASA Score"                     
                          };
             res.json(resObj);                 
         });
@@ -190,7 +192,8 @@ var Patients = {
             var resObj = {totalPatients:totalPatients,
                           omsgrt1:omsgrt1,
                           omslest1:omslest1,
-                          missing:missing                     
+                          missing:missing,
+                          info:"Curative patients classification based on the OMS Score"                    
                          };
             res.json(resObj);                 
         });
@@ -278,7 +281,8 @@ var Patients = {
                 missingbmi:missingbmi,
                 wlosslt10per:wlosslt10per,
                 wlossgt10per:wlossgt10per,                
-                missingwloss:missingwloss                     
+                missingwloss:missingwloss,
+                info:"Curative patients classification based on the BMI "                   
               };
             res.json(resObj);                 
         });
