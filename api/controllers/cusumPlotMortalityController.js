@@ -16,11 +16,11 @@ var cusumMortality = {
 
         console.log('Getting inputs...');
         //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        req.query.userLevel = 2;
-        req.query.userId = 8;
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // req.query.userLevel = 2;
+        // req.query.userId = 8;
 
         console.log('These are the inputs: '+req.query.startDate+', '+req.query.endDate+', '+req.query.formType+', '+req.query.userLevel+', '+req.query.userId);
 
@@ -39,11 +39,11 @@ var cusumMortality = {
 
         console.log('Getting inputs...');
         //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        req.query.userLevel = 2;
-        req.query.userId = 8;
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // req.query.userLevel = 2;
+        // req.query.userId = 8;
 
         console.log('These are the inputs: '+req.query.startDate+', '+req.query.endDate+', '+req.query.formType+', '+req.query.userLevel+', '+req.query.userId);
 
@@ -61,11 +61,11 @@ var cusumMortality = {
 
         console.log('Getting inputs...');
         //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        req.query.userLevel = 2;
-        req.query.userId = 8;
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // req.query.userLevel = 2;
+        // req.query.userId = 8;
 
         console.log('These are the inputs: '+req.query.startDate+', '+req.query.endDate+', '+req.query.formType+', '+req.query.userLevel+', '+req.query.userId);
 
@@ -84,11 +84,11 @@ var cusumMortality = {
 
         console.log('Getting inputs...');
         //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        req.query.userLevel = 2;
-        req.query.userId = 8;
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // req.query.userLevel = 2;
+        // req.query.userId = 8;
 
         console.log('These are the inputs: '+req.query.startDate+', '+req.query.endDate+', '+req.query.formType+', '+req.query.userLevel+', '+req.query.userId);
 
@@ -107,11 +107,11 @@ var cusumMortality = {
 
         console.log('Getting inputs...');
         //TODO: only required for unit testing
-        req.query.startDate = "2018-01-01";
-        req.query.endDate = "2019-01-01";
-        req.query.formType = "E";
-        req.query.userLevel = 2;
-        req.query.userId = 8;
+        // req.query.startDate = "2018-01-01";
+        // req.query.endDate = "2019-01-01";
+        // req.query.formType = "E";
+        // req.query.userLevel = 2;
+        // req.query.userId = 8;
 
         console.log('These are the inputs: '+req.query.startDate+', '+req.query.endDate+', '+req.query.formType+', '+req.query.userLevel+', '+req.query.userId);
 
