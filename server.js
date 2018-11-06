@@ -36,6 +36,10 @@ surgeryRoutes(app);
 var cusumMortalityRoutes = require('./api/routes/cusumPlotMortalityRoutes'); 
 cusumMortalityRoutes(app); //register the route
 
+//improting Adjuvant treatment
+var treatmentAdjvaRoutes = require('./api/routes/treatmentAdjvaRoutes');
+treatmentAdjvaRoutes(app);
+
 // TODO: importing other routes
 // ...
 
