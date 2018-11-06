@@ -32,10 +32,13 @@ fpmRoutes(app); //register the route
 var surgeryRoutes = require('./api/routes/surgeryRoutes');
 surgeryRoutes(app);
 
+//importing cusum plot mortality routes
+var cusumMortalityRoutes = require('./api/routes/cusumPlotMortalityRoutes'); 
+cusumMortalityRoutes(app); //register the route
+
 //improting Adjuvant treatment
 var treatmentAdjvaRoutes = require('./api/routes/treatmentAdjvaRoutes');
 treatmentAdjvaRoutes(app);
-
 
 // TODO: importing other routes
 // ...
