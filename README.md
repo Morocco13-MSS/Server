@@ -25,5 +25,17 @@ You may get this error
 ```
 Cannot read property 'data' of undefined
 ```
-If so please see https://github.com/joshkatz/r-script/issues/27
 
+If so please see https://github.com/joshkatz/r-script/issues/27. In short, you need to replace the init function with the below in node_modules/r-script/index.js
+
+```
+function init(path) {
+  var obj = new R(path);
+  _.bindAll(obj, "data", "call", "callSync");
+  return obj;
+}
+```
+---------------------------------------------------------------------------------
+config/default.json
+
+This file houses the filepaths you will use for data analyses using R. Please specify the paths to those scripts (see mss-r-code repo) in that file.
