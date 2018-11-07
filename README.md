@@ -38,4 +38,4 @@ function init(path) {
 ---------------------------------------------------------------------------------
 config/default.json
 
-This file houses the filepaths you will use for data analyses using R. Please specify the paths to those scripts (see mss-r-code repo) in that file.
+This file houses the filepaths you will use for data analyses using R. Please specify the paths to those scripts (see mss-r-code repo) in that file on your local machine.
