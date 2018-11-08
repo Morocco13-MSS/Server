@@ -26,19 +26,18 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "scatter";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
         },
 
     fpmb: function (req, res) {
 
         console.log('Getting inputs...');
         //TODO: only required for unit testing
-        // req.query.startDate = "2018-01-01";
+        // req.query.startDate = "2018-01-01";c
         // req.query.endDate = "2019-01-01";
         // req.query.formType = "E";
         // req.query.userLevel = 2;
@@ -49,12 +48,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "benchmark";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
         },
     fpmu: function (req, res) {
 
@@ -71,12 +69,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "up";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
         },
 
     fpml: function (req, res) {
@@ -94,12 +91,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "lo";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
         },
 
     fpmu2: function (req, res) {
@@ -117,12 +113,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "up2";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
         },
 
     fpml2: function (req, res) {
@@ -140,12 +135,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "lo2";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
     },
 
     fpmMiss: function (req, res) {
@@ -163,12 +157,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "missing";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
     },
 
     fpmDot: function (req, res) {
@@ -186,12 +179,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "userIdDot";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
     },
 
     fpmUnitsDots: function (req, res) {
@@ -209,12 +201,11 @@ var Fpm = {
         //TODO: Rememove above lines
         //TODO: change path to where your path is for your R-script
         var plotType = "allUnitsDots";
-        var fpmScatter = R(fpmMortalityPath)
+        var data = R(fpmMortalityPath)
             .data(req.query.startDate,req.query.endDate,req.query.formType,req.query.userLevel,req.query.userId,plotType)
-            .call(function(err, a) {
-                if (err) throw err;
-                res.json(a)
-            });
+            .callSync();
+                console.log(data);
+            res.json(data);
     }
     
 };
